@@ -3,7 +3,7 @@
 <p>支持Bean注解校验、常用校验功能齐全、使用简便</p>
 <p>支持使用AOP+注解的参数校验</p>
 
-##NOTE 
+## NOTE 
 validation-core是在项目 https://gitee.com/fetech-framework/smart-validator 
 基础上做了以下改动生成的，使用方式保持基本一致：
 1. 命名优化，比如ValidateUtils->ValidateValue，is->with使意义更明确
