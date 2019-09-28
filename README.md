@@ -3,9 +3,9 @@
 <p>支持Bean注解校验、常用校验功能齐全、使用简便</p>
 <p>支持使用AOP+注解的参数校验</p>
 
-NOTE 
-validation-core是在 https://gitee.com/fetech-framework/smart-validator 
-在此项目基础上做了以下改动，但是使用方式基本一致：
+##NOTE 
+validation-core是在项目 https://gitee.com/fetech-framework/smart-validator 
+基础上做了以下改动生成的，使用方式保持基本一致：
 1. 命名优化，比如ValidateUtils->ValidateValue，is->with使意义更明确
 2. 正则表达式使用Pattern缓存
 3. 去除ParamException异常，使用IllegalArgumentException替代
@@ -112,9 +112,9 @@ ValidateValue.check(user).and("2017-06-05").isDateMatch("yyyy-MM-dd");
 如果想做异常捕获，也可以自行在代码中添加try/catch（不推荐），或者添加全局的拦截器捕获该类异常。<br>
 
 ### 4.在SpringMVC项目中使用
-1. 参照 top.jfunc.validation.spring.ParamValidateAspect 编写自己的切面
-2. 参照 top.jfunc.validation.spring.RangeValidator 编写针对某个方法的校验器，并放入Spring容器
-3. 在方法上添加 top.jfunc.validation.spring.Validated 指定校验器，如果校验出错就会抛出 IllegalArgumentException ，可以在统一异常处理处理之
+1. 参照 [top.jfunc.validation.spring.ParamValidateAspect](https://gitee.com/xxssyyyyssxx/validation/blob/master/validation-spring/src/main/java/top/jfunc/validation/spring/ParamValidateAspect.java) 编写自己的切面
+2. 参照 [top.jfunc.validation.spring.RangeValidator](https://gitee.com/xxssyyyyssxx/validation/blob/master/validation-spring/src/main/java/top/jfunc/validation/spring/RangeValidator.java) 编写针对某个方法的校验器，并放入Spring容器
+3. 在方法上添加 [top.jfunc.validation.spring.Validated](https://gitee.com/xxssyyyyssxx/validation/blob/master/validation-spring/src/main/java/top/jfunc/validation/spring/Validated.java) 指定校验器，如果校验出错就会抛出 IllegalArgumentException ，可以在统一异常处理处理之
 
 ### 三、部署说明
 ```
