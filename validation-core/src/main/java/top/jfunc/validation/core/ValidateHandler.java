@@ -1,6 +1,6 @@
 package top.jfunc.validation.core;
 
-import top.jfunc.validation.utils.CommonUtil;
+import top.jfunc.validation.utils.NullUtil;
 
 import java.util.Collection;
 import java.util.Map;
@@ -203,7 +203,7 @@ public class ValidateHandler {
     }
 
     private static void errorMsgHandler(IllegalArgumentException e, String msg) {
-        if (CommonUtil.isNull(msg)) {
+        if (NullUtil.isNull(msg)) {
             throw e;
         }
         throw new IllegalArgumentException(msg);

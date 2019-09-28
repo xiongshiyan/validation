@@ -4,7 +4,7 @@ import top.jfunc.common.utils.BeanUtil;
 import top.jfunc.validation.annotation.*;
 import top.jfunc.validation.core.ValidateCache;
 import top.jfunc.validation.core.ValidateHandler;
-import top.jfunc.validation.utils.CommonUtil;
+import top.jfunc.validation.utils.NullUtil;
 import top.jfunc.validation.utils.ReflectUtil;
 
 import java.lang.annotation.Annotation;
@@ -331,7 +331,7 @@ public class ValidateValue {
             fieldSet = ReflectUtil.getFieldsByClass(value.getClass());
             ValidateCache.getInstance().setClassFields(classType, fieldSet);
         }
-        if (CommonUtil.isNull(fieldSet)) {
+        if (NullUtil.isNull(fieldSet)) {
             return validateValue;
         }
         for (Field field : fieldSet) {
@@ -340,7 +340,7 @@ public class ValidateValue {
                 annotations = field.getAnnotations();
                 ValidateCache.getInstance().setFieldAnnotations(field, annotations);
             }
-            if (CommonUtil.isNull(annotations)) {
+            if (NullUtil.isNull(annotations)) {
                 return validateValue;
             }
             Object fieldValue;

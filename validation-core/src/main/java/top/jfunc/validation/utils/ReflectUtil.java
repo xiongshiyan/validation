@@ -13,7 +13,7 @@ public class ReflectUtil {
         Set<Field> fieldSet = new HashSet<>();
         for (Class<?> clazz = cls; clazz != Object.class; clazz = clazz.getSuperclass()) {
             Field[] fields = clazz.getDeclaredFields();
-            if (CommonUtil.isNull(fields)) {
+            if (NullUtil.isNull(fields)) {
                 continue;
             }
             for (Field field : fields) {

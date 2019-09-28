@@ -5,7 +5,7 @@ import top.jfunc.validation.ValidateValue;
 
 /**
  * 示例用法
- * 具体校验可以参看 {@see https://gitee.com/xxssyyyyssxx/smart-validator}
+ * 具体校验可以参看 {@link ValidateValue}
  * @author xiongshiyan at 2019/9/28 , contact me with email yanshixiong@126.com or phone 15208384257
  */
 @Component

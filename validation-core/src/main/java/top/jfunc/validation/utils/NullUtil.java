@@ -1,6 +1,5 @@
 package top.jfunc.validation.utils;
 
-import top.jfunc.common.utils.ArrayUtil;
 import top.jfunc.common.utils.CollectionUtil;
 import top.jfunc.common.utils.StrUtil;
 
@@ -8,9 +7,9 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by ZhangGang on 2017/8/31.
+ * @author xiongshiyan
  */
-public class CommonUtil {
+public class NullUtil {
     public static boolean isNull(String str) {
         return StrUtil.isEmpty(str);
     }
@@ -23,7 +22,7 @@ public class CommonUtil {
         return null == paramMap || paramMap.isEmpty();
     }
 
-    public static boolean isNull(Object[] array) {
+    public static <T> boolean  isNull(T[] array) {
         return null == array || array.length == 0;
     }
 }

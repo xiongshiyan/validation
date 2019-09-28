@@ -2,7 +2,7 @@ package top.jfunc.validation.core;
 
 
 import top.jfunc.validation.utils.CharUtil;
-import top.jfunc.validation.utils.CommonUtil;
+import top.jfunc.validation.utils.NullUtil;
 import top.jfunc.validation.utils.IpUtil;
 import top.jfunc.validation.utils.RegexUtil;
 
@@ -98,7 +98,7 @@ class ValidateProcess {
     }
 
     static void notNull(String value) {
-        if (CommonUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
+        if (NullUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
     }
 
     static void notNull(Number number) {
@@ -106,15 +106,15 @@ class ValidateProcess {
     }
 
     static void notNull(Collection value) {
-        if (CommonUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
+        if (NullUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
     }
 
     static void notNull(Map value) {
-        if (CommonUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
+        if (NullUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
     }
 
     static void notNull(Object[] value) {
-        if (CommonUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
+        if (NullUtil.isNull(value)) throw new IllegalArgumentException(NOT_NULL_ERROR_MSG);
     }
 
     static void regex(String regex, String value) {
@@ -122,7 +122,7 @@ class ValidateProcess {
     }
 
     private static void regex(Pattern regex, String value, String msg) {
-        if (!CommonUtil.isNull(value)) {
+        if (!NullUtil.isNull(value)) {
             if (!RegexUtil.test(regex, value)) {
                 throw new IllegalArgumentException(msg);
             }
@@ -154,7 +154,7 @@ class ValidateProcess {
     }
 
     static void maxLength(int max, String value) {
-        if (!CommonUtil.isNull(value)) {
+        if (!NullUtil.isNull(value)) {
             if (value.length() > max)
                 throw new IllegalArgumentException(MAX_LENGTH_ERROR_MSG + ", max:" + max + ", value:" + value);
         }
@@ -206,7 +206,7 @@ class ValidateProcess {
     }
 
     static void minLength(int min, String value) {
-        if (!CommonUtil.isNull(value)) {
+        if (!NullUtil.isNull(value)) {
             if (value.length() < min) throw new IllegalArgumentException(MIN_ERROR_MSG + ", min:" + min + ", value:" + value);
         }
     }
@@ -233,7 +233,7 @@ class ValidateProcess {
     }
 
     static void date(String format, String value) {
-        if (!CommonUtil.isNull(value)) {
+        if (!NullUtil.isNull(value)) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
             try {
                 simpleDateFormat.parse(value);
@@ -262,7 +262,7 @@ class ValidateProcess {
      * i为身份证号码从右往左数的 2...18 位; Y_P为校验码所在校验码数组位置
      */
     static void idCard(String value) {
-        if (!CommonUtil.isNull(value)) {
+        if (!NullUtil.isNull(value)) {
             String idCard = value.toLowerCase();
             int length = idCard.length();
             //校验位数
