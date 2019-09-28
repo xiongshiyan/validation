@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        //classpath "com.novoda:bintray-release:0.3.4"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+
+subprojects{
+    group 'top.jfunc.validation'
+    version '1.0'
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven-publish'
+    //用于上传到jcenter
+    apply plugin: 'com.jfrog.bintray'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    //统一版本管理
+    ext {
+        CommonUtilVersion       = '1.8.2.4'
+        SpringVersion           = '4.3.11.RELEASE'
+        AspectJVersion          = '1.8.10'
+
+        JUnitVersion            = '4.12'
+        HamcrestVersion         = '1.3'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        //导入本地的依赖包
+        //compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        testCompile ("junit:junit:${JUnitVersion}")
+        testCompile ("org.hamcrest:hamcrest-core:${HamcrestVersion}")
+        testCompile ("org.hamcrest:hamcrest-library:${HamcrestVersion}")
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    jar {
+        manifest {
+            attributes('Version': "${version}")
+            attributes('Author': 'xiongshiyan')
+            attributes('Phone': '15208384257')
+            attributes('Email': 'yanshixiong@126.com')
+            attributes('Build-By': 'Gradle-4.6')
+            attributes('Licences': 'Apache-2.0')
+            attributes('GitUrl-Gitee': 'https://gitee.com/xxssyyyyssxx/validation')
+            attributes('GitUrl-Github': 'https://github.com/xiongshiyan/validation')
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.6'
+}
